@@ -11,7 +11,12 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-loading">
+<script id="mp_template" type="text/template">
+ Name: {{name}}
+</script>
 
+<div id="mypanel"></div>
+		
 		<!-- Wrapper -->
 			<div id="wrapper">
 
@@ -60,5 +65,19 @@
 	console.warn(error);
 });
 	</script>
+		
+		<script>
+
+   
+            $.getJSON('https://js.netcetera.workers.dev/', function(data) {
+
+                    var template = $("#mp_template").html();
+                    var text = Mustache.render(template, data);
+
+                    $("#mypanel").html(text);
+            });
+       
+</script>
+		
 	</body>
 </html>
