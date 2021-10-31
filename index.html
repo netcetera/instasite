@@ -15,11 +15,7 @@
 
 	</head>
 	<body class="is-loading">
-<script id="mp_template" type="text/template">
- Name: {{name}}
-</script>
-
-<div id="mypanel"></div>
+<script type="text/html" id="template">
 		
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -27,7 +23,7 @@
 				<!-- Main -->
 					<section id="main">
 						<header>
-							<span class="avatar"><img src="images/avatar.jpg" alt="" /></span>
+							<span class="avatar"><img src="{{picurl}}" alt="" /></span>
 							<h1>{{name}}</h1>
 							<p>{{bio}}</p>
 						</header>
@@ -36,10 +32,13 @@
 								<li><a href="{{twitter}}" class="fa-twitter">Twitter</a></li>
 								<li><a href="{{instagram}}" class="fa-instagram">Instagram</a></li>
 								<li><a href="{{facebook}}" class="fa-facebook">Facebook</a></li>
+									<li><a href="{{linkedin}}" class="fa-linkedin">Linkedin</a></li>
 							</ul>
 						</footer>
 					</section>
+</script>
 
+<div id="container"></div>
 				<!-- Footer -->
 					<footer id="footer">
 						<ul class="copyright">
@@ -75,10 +74,14 @@
    
             $.getJSON('https://js.netcetera.workers.dev/', function(data) {
 
-                    var template = $("#mp_template").html();
-                    var text = Mustache.render(template, data);
-
-                    $("#mypanel").html(text);
+                 //get a reference to our HTML template
+		template = $('#template').html(),
+ 
+		//tell Mustache.js to iterate through the JSON and insert the data into the HTML template
+		output = Mustache.render(template, data);
+ 
+		//append the HTML template to the DOM
+		$('#container').append(output);
             });
        
 </script>
