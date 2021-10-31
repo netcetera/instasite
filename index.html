@@ -19,14 +19,14 @@
 					<section id="main">
 						<header>
 							<span class="avatar"><img src="images/avatar.jpg" alt="" /></span>
-							<h1>Jane Doe</h1>
-							<p>Senior Psychonautics Engineer</p>
+							<h1>{{name}}</h1>
+							<p>{{bio}}</p>
 						</header>
 						<footer>
 							<ul class="icons">
-								<li><a href="#" class="fa-twitter">Twitter</a></li>
-								<li><a href="#" class="fa-instagram">Instagram</a></li>
-								<li><a href="#" class="fa-facebook">Facebook</a></li>
+								<li><a href="{{twitter}}" class="fa-twitter">Twitter</a></li>
+								<li><a href="{{instagram}}" class="fa-instagram">Instagram</a></li>
+								<li><a href="{{facebook}}" class="fa-facebook">Facebook</a></li>
 							</ul>
 						</footer>
 					</section>
@@ -34,7 +34,7 @@
 				<!-- Footer -->
 					<footer id="footer">
 						<ul class="copyright">
-							<li>&copy; <a href="http://instasitea.pp">Instasite</a> 2021</li>
+							<li>&copy; <a href="http://instasite.app">Instasite</a> 2021</li>
 						</ul>
 					</footer>
 
@@ -48,6 +48,17 @@
 					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
 				}
 			</script>
-
+<script>
+	fetch('https://js.netcetera.workers.dev/').then(function (response) {
+	if (response.ok) {
+		return response.json();
+	};
+	return Promise.reject(response);
+}).then(function (data) {
+	console.log(data);
+}).catch(function (error) {
+	console.warn(error);
+});
+	</script>
 	</body>
 </html>
